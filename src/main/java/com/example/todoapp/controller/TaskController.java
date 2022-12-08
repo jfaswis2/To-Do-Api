@@ -2,8 +2,8 @@ package com.example.todoapp.controller;
 
 import com.example.todoapp.persistence.entity.Task;
 import com.example.todoapp.persistence.entity.TaskStatus;
-import com.example.todoapp.service.TaskService;
-import com.example.todoapp.service.dto.TaskInDTO;
+import com.example.todoapp.exceptions.service.TaskService;
+import com.example.todoapp.exceptions.service.dto.TaskInDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +36,12 @@ public class TaskController {
     @PatchMapping("/mark_as_finished/{id}")
     public ResponseEntity<Void> markAsFinished(@PathVariable("id") Long id){
         this.taskService.updateTaskAsFinished(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+        this.taskService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

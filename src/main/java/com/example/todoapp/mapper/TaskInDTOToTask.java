@@ -2,7 +2,7 @@ package com.example.todoapp.mapper;
 
 import com.example.todoapp.persistence.entity.Task;
 import com.example.todoapp.persistence.entity.TaskStatus;
-import com.example.todoapp.service.dto.TaskInDTO;
+import com.example.todoapp.exceptions.service.dto.TaskInDTO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

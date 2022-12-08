@@ -1,4 +1,4 @@
-package com.example.todoapp.service.dto;
+package com.example.todoapp.exceptions.service.dto;
 
 import lombok.Data;
 

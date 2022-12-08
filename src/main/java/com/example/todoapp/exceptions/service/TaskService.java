@@ -1,11 +1,11 @@
-package com.example.todoapp.service;
+package com.example.todoapp.exceptions.service;
 
 import com.example.todoapp.exceptions.ToDoExceptions;
+import com.example.todoapp.exceptions.service.dto.TaskInDTO;
 import com.example.todoapp.mapper.TaskInDTOToTask;
 import com.example.todoapp.persistence.entity.Task;
 import com.example.todoapp.persistence.entity.TaskStatus;
 import com.example.todoapp.persistence.repository.TaskRepository;
-import com.example.todoapp.service.dto.TaskInDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +44,13 @@ public class TaskService {
             throw new ToDoExceptions("Task not found" , HttpStatus.NOT_FOUND);
         }
         this.repository.markTaskAsFinished(id);
+    }
+
+    public void deleteById(Long id){
+        Optional<Task> optionalTask = this.repository.findById(id);
+        if (optionalTask.isEmpty()){
+            throw new ToDoExceptions("Task not found" , HttpStatus.NOT_FOUND);
+        }
+        this.repository.deleteById(id);
     }
 }
