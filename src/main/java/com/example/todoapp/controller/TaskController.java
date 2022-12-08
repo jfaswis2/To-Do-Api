@@ -1,6 +1,7 @@
 package com.example.todoapp.controller;
 
 import com.example.todoapp.persistence.entity.Task;
+import com.example.todoapp.persistence.entity.TaskStatus;
 import com.example.todoapp.service.TaskService;
 import com.example.todoapp.service.dto.TaskInDTO;
 import org.springframework.web.bind.annotation.*;
@@ -26,4 +27,8 @@ public class TaskController {
         return this.taskService.findAll();
     }
 
+    @GetMapping("/status/{status}")
+    public List<Task> findAllByStatus(@PathVariable("status") TaskStatus status){
+        return this.taskService.findAllByTaskStatus(status);
+    }
 }
